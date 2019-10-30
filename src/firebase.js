@@ -11,7 +11,7 @@ let firebaseConfig = {
     messagingSenderId: "29701703055",
     appId: "1:29701703055:web:68aa49b42f47ee305c37fa",
     measurementId: "G-7Y733NL342"
-}
+};
 
 class Firebase {
     constructor() {
@@ -21,7 +21,7 @@ class Firebase {
     }
 
     login(email, password) {
-        return app.auth().signInWithEmailAndPassword(email,password);
+        return app.auth().signInWithEmailAndPassword(email, password);
     }
 
     async register(nome, email, password) {
@@ -40,8 +40,17 @@ class Firebase {
         })
     }
 
-    getCurrent(){
+    getCurrent() {
         return app.auth().currentUser && app.auth().currentUser.email;
+    }
+
+    async getUserName(callback) {
+        if (!app.auth().currentUser) {
+            return null;
+        }
+
+        const uid = app.auth().currentUser.uid;
+        await app.database().ref('usuarios').child(uid).once('value').then(callback);
     }
 }
 
