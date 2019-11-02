@@ -38,6 +38,21 @@ form#new-post span{
     font-size: 15px;
 }
 
+form#new-post label{
+    width: 200px;
+}
+
+form#new-post img{
+    width: 200px;
+    height: 100px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+form#new-post progress{
+    margin-bottom: 15px;
+}
+
 form#new-post input[type=text]{
     height: 40px;
     border-radius: 5px;
